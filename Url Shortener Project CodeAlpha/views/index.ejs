@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+  </head>
+  <body class="bg-zinc-900 text-white flex items-center justify-center min-h-screen">
+    <div class="bg-zinc-800 shadow-lg rounded-xl p-8 w-full max-w-md">
+      <h1 class="text-3xl font-bold mb-6 text-center text-white">🔗 URL Shortener</h1>
+
+      <form action="/shorten" method="POST" class="space-y-5">
+        <div>
+          <label class="block text-gray-300 font-medium mb-1">Enter Long URL:</label>
+          <input
+            type="url"
+            name="originalUrl"
+            required
+            placeholder="https://url..."
+            class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-200"
+        >
+          Shorten URL
+        </button>
+        
+   <% if (shortUrl) { %>
+  <div class="mt-6 bg-gray-900 text-white p-4 rounded-xl shadow-lg text-center">
+    <p class="text-lg font-semibold mb-2"><%= message %></p>
+    <a href="http://<%= shortUrl %>" target="_blank" class="text-blue-400 hover:text-blue-200 underline break-all">
+      <%= shortUrl %>
+    </a>
+    <p class="text-sm text-gray-400 mt-2">Total Clicks: <%= clicks %></p>
+
+  </div>
+        <a class="text-blue-500 underline" href="/">Back</a>
+    <p class="text-sm text-gray-400 mt-2">Created <%= createdAt %></p>
+
+
+<% } %>
+     
+      </form>
+    </div>
+  </body>
+</html>
